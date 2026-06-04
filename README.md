@@ -65,5 +65,5 @@ let result = try await prompt.ask(reader: reader, writer: writer)
 
 ## Requirements
 
-- macOS 13+
+- macOS 15+
 - Swift 6.0+

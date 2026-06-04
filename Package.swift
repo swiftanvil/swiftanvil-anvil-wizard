@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "AnvilWizard",
-    platforms: [.macOS(.v13)],
+    platforms: [.macOS(.v15)],
     products: [
         .library(name: "AnvilWizard", targets: ["AnvilWizard"]),
     ],
