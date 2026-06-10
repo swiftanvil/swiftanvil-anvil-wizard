@@ -4,7 +4,7 @@ import Foundation
 public struct ConfirmPrompt: Prompt {
     public let question: String
     public let defaultValue: Bool
-    
+
     /// Creates a confirmation prompt.
     /// - Parameters:
     ///   - question: The question to display.
@@ -13,21 +13,21 @@ public struct ConfirmPrompt: Prompt {
         self.question = question
         self.defaultValue = defaultValue
     }
-    
+
     public func ask(reader: any InputReader, writer: any OutputWriter) async throws -> Bool {
         let defaultHint = defaultValue ? "Y/n" : "y/N"
         await writer.write("\(question) [\(defaultHint)]: ")
-        
+
         guard let line = try await reader.readLine() else {
             throw WizardError.cancelled
         }
-        
+
         let input = line.trimmingCharacters(in: .whitespaces).lowercased()
-        
+
         if input.isEmpty {
             return defaultValue
         }
-        
+
         switch input {
         case "y", "yes": return true
         case "n", "no": return false
